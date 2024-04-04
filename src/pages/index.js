@@ -37,15 +37,16 @@ const Index = () => {
   const subscribeButtonOnClick = async event => {
     console.log("click")
     event.preventDefault()
-    const sw = await navigator.serviceWorker.ready;
-    let push = await sw.pushManager.subscribe({
-      userVisibleOnly:true,
-      applicationServerKey:"BEfNFaJZNhNjsGDqHcjPrEhJpXl4GX61LeeCe-g0-1Dy0Sfp4ejbG9A_AhPbuYkWQbampT6UoDmlyWxvaUxTKEI"
-    })
-    // const sub = await registration.pushManager.subscribe({
-    //   userVisibleOnly: true,
-    //   applicationServerKey: base64ToUint8Array(process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY)
+    // const sw = await navigator.serviceWorker.ready;
+    // let push = await sw.pushManager.subscribe({
+    //   userVisibleOnly:true,
+    //   applicationServerKey:"BEfNFaJZNhNjsGDqHcjPrEhJpXl4GX61LeeCe-g0-1Dy0Sfp4ejbG9A_AhPbuYkWQbampT6UoDmlyWxvaUxTKEI"
     // })
+    const sub = await registration.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: base64ToUint8Array(process.env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY)
+    })
+    console.log(sub)
 
 
     // TODO: you should call your API to save subscription data on server in order to send web push notification from server
